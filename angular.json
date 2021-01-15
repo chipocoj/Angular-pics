@@ -56,6 +56,22 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
             }
           }
         },
@@ -67,6 +83,12 @@
           "configurations": {
             "production": {
               "browserTarget": "angular-pics:build:production"
+            },
+            "qa": {
+              "browserTarget": "angular-pics:build:qa"
+            },
+            "dev": {
+              "browserTarget": "angular-pics:build:dev"
             }
           }
         },
