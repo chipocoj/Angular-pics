@@ -1,0 +1,14 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+        <label class="col col-form-label">{{labelText}}</label>
+        <div class="col">
+            <input 
+                type="text" 
+                class="form-control"
+                name="search"
+                placeholder="Search"
+                autocomplete="off"
+                ngModel>
+        </div>
+    </div>
+</form>
