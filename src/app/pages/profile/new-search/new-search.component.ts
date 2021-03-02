@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, of, Subscription } from 'rxjs';
-import { Pic } from '../models/pic';
+import { Pic } from '../../../shared/models/pic';
 import { SearchUnsplashService } from '../services/search-unsplash.service';
 
 @Component({

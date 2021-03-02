@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, pluck } from 'rxjs/operators';
-import { Pic } from '../models/pic';
+import { Pic } from '../../../shared/models/pic';
 import { HEADERS } from './unsplash-api/headers';
 
 @Injectable({

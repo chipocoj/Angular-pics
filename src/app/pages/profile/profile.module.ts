@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 import { SearchBarComponent } from "./new-search/search-bar/search-bar.component";
 import { NewSearchComponent } from './new-search/new-search.component';
 import { ProfileRoutingModule } from "./profile-routing.module";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { ProfileRoutingModule } from "./profile-routing.module";
         NewSearchComponent
     ],
     imports: [
+        CommonModule,
         ProfileRoutingModule,
         SharedModule,
         FormsModule,

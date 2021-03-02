@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Pic } from '../../models/pic';
 
 @Component({
   selector: 'app-image-list',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./image-list.component.css']
 })
 export class ImageListComponent implements OnInit {
+
+  @Input()
+  imageSource$: Observable<Pic[]>;
 
   constructor() { }
 
