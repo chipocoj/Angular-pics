@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, pluck } from 'rxjs/operators';
 import { Pic } from '../models/pic';
 import { HEADERS } from './unsplash-api/headers';
 
@@ -18,8 +18,8 @@ export class SearchUnsplashService {
 
   search(searchTerm: string) : void {
     this.http.get<Pic[]>(this.queryUrl, { headers: HEADERS, params: { 'query': searchTerm, 'per_page': '20' }})
-      .pipe(catchError(this.handleError))
-      .subscribe(data => {
+      .pipe(pluck('results'), catchError(this.handleError))
+      .subscribe( (data: Pic[]) => {
         if (data && this.getPicSource) {
           this.getPicSource.next(data);
         }
