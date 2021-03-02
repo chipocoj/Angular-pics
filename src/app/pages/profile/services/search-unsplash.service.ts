@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Pic } from '../models/pic';
 import { HEADERS } from './unsplash-api/headers';
 
@@ -15,19 +16,25 @@ export class SearchUnsplashService {
 
   constructor(private http: HttpClient) { }
 
-  search(searchTerm: string) {
-    this.http.get<Pic[]>(this.queryUrl, {
-      headers: HEADERS,
-      params: {
-        'query': searchTerm,
-        'per_page': '20'
+  search(searchTerm: string) : void {
+    this.http.get<Pic[]>(this.queryUrl, { headers: HEADERS, params: { 'query': searchTerm, 'per_page': '20' }})
+      .pipe(catchError(this.handleError))
+      .subscribe(data => {
+        if (data && this.getPicSource) {
+          this.getPicSource.next(data);
+        }
       }
-    }).subscribe(data => {
-          if (data && this.getPicSource) {
-            this.getPicSource.next(data);
-          }
-        },
-        error => console.log(error)
-      );
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError('Something bad happened; please try again later.');
   }
 }
