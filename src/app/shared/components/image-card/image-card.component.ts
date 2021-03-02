@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Pic } from '../../models/pic';
 
 @Component({
   selector: 'image-card',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageCardComponent implements OnInit {
   url:string;
+
+  @Input()
+  image : Pic;
 
   constructor() { }
 

@@ -12,7 +12,8 @@ import { ImageListComponent } from './components/image-list/image-list.component
         CommonModule
     ],
     exports: [
-        ImageCardComponent
+        ImageCardComponent,
+        ImageListComponent
     ],
     providers: [
     ],

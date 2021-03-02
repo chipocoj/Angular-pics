@@ -1,5 +1,5 @@
 export interface Pic {
     id: string;
     alt: string;
-    imageUrl?: string;
+    url?: string;
 }

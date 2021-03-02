@@ -2,7 +2,7 @@
     [labelText]="searchBarLabel"
     (newSearchEvent)="newSearch($event)"></app-search-bar>
 
-<div *ngIf="(pics$ | async) as pics; else loading">
+<!-- <div *ngIf="(pics$ | async) as pics; else loading">
     <p>Please check this paragraph out</p>
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let pic of pics">
@@ -11,4 +11,5 @@
     </ul>
 </div>
 
-<ng-template #loading>Loading User Data...</ng-template>
+<ng-template #loading>Loading User Data...</ng-template> -->
+<image-list [imageSource]="(pics$ | async)"></image-list>

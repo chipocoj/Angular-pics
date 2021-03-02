@@ -1,6 +1,6 @@
-<div *ngIf="(imageSource$ | async) as images; else loading">
+<div class="image-list">
     <image-card 
         *ngFor="let image of images"
-        ></image-card>
+        [image]="image"></image-card>
 </div>
 <ng-template #loading>Loading images...</ng-template>
