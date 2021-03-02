@@ -17,10 +17,10 @@ export class SearchUnsplashService {
   constructor(private http: HttpClient) { }
 
   search(searchTerm: string) : void {
-    this.http.get<Pic[]>(this.queryUrl, { headers: HEADERS, params: { 'query': searchTerm, 'per_page': '20' }})
+    this.http.get<Pic[]>(this.queryUrl, { headers: HEADERS, params: { 'query': searchTerm, 'per_page': '9' }})
       .pipe(
         pluck('results'),
-        map( (res:any) => res.map(pic => ({ id: `${pic.id}`, alt: `${pic.alt_description}`, url: `${pic.urls.regular}` }) as Pic) ),
+        map( (res:any) => res.map(pic => ({ id: `${pic.id}`, alt: `${pic.alt_description}`, url: `${pic.urls.regular}`, author: `${pic.user.name}`, tags: pic.tags }) as Pic) ),
         catchError(this.handleError)
       )
       .subscribe( (data:Pic[]) => {

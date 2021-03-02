@@ -7,7 +7,6 @@ import { Pic } from '../../models/pic';
   styleUrls: ['./image-card.component.css']
 })
 export class ImageCardComponent implements OnInit {
-  url:string;
 
   @Input()
   image : Pic;
@@ -16,5 +15,5 @@ export class ImageCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
 }
