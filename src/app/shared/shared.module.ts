@@ -1,23 +1,19 @@
 import { NgModule } from "@angular/core";
-import { SearchBarComponent } from "./components/search-bar/search-bar.component";
-import { SearchUnsplashService } from "./services/search-unsplash.service";
-import { FormsModule } from '@angular/forms';
 import { ImageCardComponent } from './components/image-card/image-card.component';
+import { ImageListComponent } from './components/image-list/image-list.component';
 
 @NgModule({
     declarations: [
-        SearchBarComponent,
-        ImageCardComponent
+        ImageCardComponent,
+        ImageListComponent
     ],
     imports: [
-        FormsModule
+
     ],
     exports: [
-        SearchBarComponent,
         ImageCardComponent
     ],
     providers: [
-        SearchUnsplashService
     ],
     bootstrap: [
 

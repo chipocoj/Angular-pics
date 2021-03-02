@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SearchService } from '../../services/http/search.service';
+import { SearchUnsplashService } from '../../services/search-unsplash.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -12,14 +12,13 @@ export class SearchBarComponent implements OnInit {
   @Input()
   labelText: string;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchUnsplashService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(f:NgForm) {
-    this.searchService.search(f.value.search)
-      .subscribe(data => console.log(data));
+    console.log(this.searchService.search(f.value.search));
     f.resetForm();
   }
 }
