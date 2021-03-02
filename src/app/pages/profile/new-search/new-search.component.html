@@ -1,1 +1,3 @@
-<app-search-bar [labelText]="searchBarLabel"></app-search-bar>
+<app-search-bar 
+    [labelText]="searchBarLabel"
+    (newSearchEvent)="newSearch($event)"></app-search-bar>

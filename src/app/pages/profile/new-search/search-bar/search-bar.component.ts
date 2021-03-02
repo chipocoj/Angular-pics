@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { SearchUnsplashService } from '../../services/search-unsplash.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -12,13 +11,16 @@ export class SearchBarComponent implements OnInit {
   @Input()
   labelText: string;
 
-  constructor(private searchService: SearchUnsplashService) { }
+  @Output()
+  newSearchEvent = new EventEmitter<string>();
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   onSubmit(f:NgForm) {
-    console.log(this.searchService.search(f.value.search));
+    this.newSearchEvent.emit(f.value.search);
     f.resetForm();
   }
 }
