@@ -10,9 +10,8 @@ import { HEADERS } from './unsplash-api/headers';
 })
 export class SearchUnsplashService {
   private queryUrl: string = 'https://api.unsplash.com/search/photos';
-
-  private getPicSource = new BehaviorSubject<Pic[]>([]);
-  public getPicsChanged$ = this.getPicSource.asObservable();
+  private getPicsSource = new BehaviorSubject<Pic[]>([]);
+  public getPicsChanged$ = this.getPicsSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -24,8 +23,8 @@ export class SearchUnsplashService {
         catchError(this.handleError)
       )
       .subscribe( (data:Pic[]) => {
-        if (data && this.getPicSource) {
-          this.getPicSource.next(data);
+        if (data && this.getPicsSource) {
+          this.getPicsSource.next(data);
         }
       });
   }
