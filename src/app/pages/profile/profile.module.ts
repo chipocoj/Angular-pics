@@ -17,8 +17,8 @@ import { CommonModule } from "@angular/common";
         NewSearchComponent
     ],
     imports: [
-        CommonModule,
         ProfileRoutingModule,
+        CommonModule,
         SharedModule,
         FormsModule,
         NgbNavModule

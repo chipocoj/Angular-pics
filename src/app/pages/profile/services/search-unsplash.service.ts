@@ -27,8 +27,7 @@ export class SearchUnsplashService {
         if (data && this.getPicSource) {
           this.getPicSource.next(data);
         }
-      }
-    );
+      });
   }
 
   private handleError(error: HttpErrorResponse) {
