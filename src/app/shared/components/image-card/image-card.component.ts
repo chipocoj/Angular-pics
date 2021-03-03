@@ -11,9 +11,13 @@ export class ImageCardComponent implements OnInit {
   @Input()
   image : Pic;
 
+  get emptyTags(): boolean {
+    return this.image.tags.length === 0;
+  }
+
   constructor() { }
 
   ngOnInit(): void {
   }
-  
+
 }

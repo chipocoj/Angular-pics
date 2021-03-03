@@ -1,13 +1,18 @@
-<div class="card" style="width: 300px">
+<div class="card card-box">
     <img
         class="card-img-top img-cropped"
         alt="{{image.alt}}"
         src="{{image.url}}">
     
     <div class="card-body">
-            <h5 class="card-title">Photo by {{image.author}}</h5>
-            <p class="card-text">
-                <span *ngFor="let tag of image.tags">{{tag.title}} </span>
+            <p class="card-title">
+                <span style="font-weight:bold">{{image.author}}</span>
+            </p>
+            <p class="card-text" *ngIf=!emptyTags>
+                <span *ngFor="let tag of image.tags" class="text-muted">{{tag.title}} </span>
+            </p>
+            <p class="card-text" *ngIf="emptyTags">
+                <span class="text-muted">no-tags</span>
             </p>
     </div>
 
