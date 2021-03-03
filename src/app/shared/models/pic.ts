@@ -1,5 +1,6 @@
 export interface Pic {
-    id: string;
+    id?: number;
+    picId: string;
     alt: string;
     url: string;
     author?: string;
