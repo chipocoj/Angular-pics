@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Pic } from '../../models/pic';
+import { ImageCardService } from '../../services/image-card.service';
 
 @Component({
   selector: 'image-card',
@@ -15,9 +16,12 @@ export class ImageCardComponent implements OnInit {
     return this.image.tags.length === 0;
   }
 
-  constructor() { }
+  constructor(private imageCardService: ImageCardService) { }
 
   ngOnInit(): void {
   }
 
+  addToFavorites(pic: Pic): void {
+    this.imageCardService.emitImageCardEvent(pic);
+  }
 }

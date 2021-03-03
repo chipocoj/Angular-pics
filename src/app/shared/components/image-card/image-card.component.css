@@ -24,3 +24,11 @@
 .img-select-circle {
     display:none;
 }
+
+i {
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+}
