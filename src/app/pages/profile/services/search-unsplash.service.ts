@@ -22,7 +22,7 @@ export class SearchUnsplashService {
         map( (res:any) => res.map(pic => ({ picId: `${pic.id}`, alt: `${pic.alt_description}`, url: `${pic.urls.regular}`, author: `${pic.user.name}`, tags: pic.tags }) as Pic) ),
         catchError(this.handleError)
       )
-      .subscribe( (data:Pic[]) => {
+      .subscribe((data:Pic[]) => {
         if (data && this.getPicsSource) {
           this.getPicsSource.next(data);
         }
