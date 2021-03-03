@@ -16,6 +16,7 @@ export class NewSearchComponent implements OnInit, OnDestroy {
   private picsSubscription: Subscription;
   private inMemSubscription: Subscription;
   private addPicSubscription: Subscription;
+  private selectedPicSubscription: Subscription;
   searchTerm: string;
   pics$: Observable<Pic[]>;
   
@@ -24,14 +25,9 @@ export class NewSearchComponent implements OnInit, OnDestroy {
               private imageCardService: ImageCardService) { }
 
   ngOnInit(): void {
-    this.getInMemPics();
+    this.inMemSubscription = this.profileService.getPics().subscribe(pics => {console.log(pics); this.pics = pics});
     this.picsSubscription = this.searchService.getPicsChanged$.subscribe(data => this.onPicsLoaded(data));
-    this.imageCardService.getPicChanged$.subscribe(pic => this.add(pic));
-  }
-
-  getInMemPics(): void {
-    this.inMemSubscription = this.profileService.getPics()
-      .subscribe(pics => {console.log(pics); this.pics = pics});
+    this.selectedPicSubscription = this.imageCardService.getPicChanged$.subscribe(pic => this.add(pic));
   }
 
   ngOnDestroy(): void {
@@ -41,6 +37,9 @@ export class NewSearchComponent implements OnInit, OnDestroy {
     }
     if(this.addPicSubscription) {
       this.addPicSubscription.unsubscribe();
+    }
+    if(this.selectedPicSubscription) {
+      this.selectedPicSubscription.unsubscribe();
     }
   }
 
