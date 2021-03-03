@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, of, Subscription } from 'rxjs';
 import { Pic } from 'src/app/shared/models/pic';
 import { ProfileService } from '../services/profile.service';
 
@@ -7,18 +8,21 @@ import { ProfileService } from '../services/profile.service';
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.css']
 })
-export class FavoritesComponent implements OnInit {
+export class FavoritesComponent implements OnInit, OnDestroy {
+  private inMemSubscription: Subscription;
   pics: Pic[];
+  pics$: Observable<Pic[]>;
 
   constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    this.getPics();
+    this.inMemSubscription = this.profileService.getPics().subscribe(pics => {console.log(pics); this.pics = pics; this.pics$ = of(this.pics); console.log(this.pics)});
   }
 
-  getPics(): void {
-    this.profileService.getPics()
-      .subscribe(pics => {console.log(pics); this.pics = pics});
+  ngOnDestroy(): void {
+    if(this.inMemSubscription) {
+      this.inMemSubscription.unsubscribe();
+    }
   }
 
   delete(pic: Pic): void {

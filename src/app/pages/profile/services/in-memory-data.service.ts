@@ -16,7 +16,8 @@ export class InMemoryDataService implements InMemoryDbService {
         picId: "koy6FlCCy5s",
         alt: "orange petaled flowers",
         author: "Sergey Shmidt",
-        tags: []
+        tags: [],
+        url: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTkyMzN8MHwxfHNlYXJjaHwxfHxmbG93ZXJ8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080"
       },
       {
         id: 2,
@@ -27,7 +28,8 @@ export class InMemoryDataService implements InMemoryDbService {
           { title: "automobile" },
           { title: "car" },
           { title: "transportation" }
-        ]
+        ],
+        url: "https://images.unsplash.com/photo-1597404294360-feeeda04612e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTkyMzN8MHwxfHNlYXJjaHwxfHxjYXJ8ZW58MHx8fA&ixlib=rb-1.2.1&q=80&w=1080"
       }
     ];
     return {pics};

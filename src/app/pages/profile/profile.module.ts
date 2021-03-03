@@ -8,13 +8,15 @@ import { SearchBarComponent } from "./new-search/search-bar/search-bar.component
 import { NewSearchComponent } from './new-search/new-search.component';
 import { ProfileRoutingModule } from "./profile-routing.module";
 import { CommonModule } from "@angular/common";
+import { FavoritesComponent } from "./favorites/favorites.component";
 
 @NgModule({
     declarations: [
         ProfileComponent,
         SearchBarComponent,
         NavComponent,
-        NewSearchComponent
+        NewSearchComponent,
+        FavoritesComponent
     ],
     imports: [
         ProfileRoutingModule,
